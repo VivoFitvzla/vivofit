@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>765513878752-fmfdbddiim39tu2cbnd9qvo93uinhqds.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.765513878752-fmfdbddiim39tu2cbnd9qvo93uinhqds</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>765513878752-i5gt5k8a94r766tkglgb2nf9odqr1a9v.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBYVqTrPsodOocbg6pm7IxveKKdcdZokW4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>765513878752</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.vivofitvzla.vivofit</string>
+	<key>PROJECT_ID</key>
+	<string>vivofit-7cb9d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vivofit-7cb9d.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:765513878752:ios:ed380b49c4d16c83b91485</string>
+</dict>
+</plist>

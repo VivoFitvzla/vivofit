@@ -1,0 +1,18 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "VideoClases",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "tagPrograma",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "diaVideo",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}
