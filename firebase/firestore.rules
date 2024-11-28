@@ -2,31 +2,31 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /Users/{document} {
-      allow create: if request.auth != null;
-      allow read: if request.auth.uid == document;
-      allow write: if request.auth != null;
-      allow delete: if request.auth.uid == document;
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
     }
 
     match /Rutinas/{document} {
-      allow create: if request.auth != null;
+      allow create: if true;
       allow read: if true;
-      allow write: if request.auth != null;
-      allow delete: if false;
+      allow write: if true;
+      allow delete: if true;
     }
 
     match /Programas/{document} {
-      allow create: if request.auth != null;
+      allow create: if true;
       allow read: if true;
-      allow write: if request.auth != null;
-      allow delete: if false;
+      allow write: if true;
+      allow delete: if true;
     }
 
     match /VideoClases/{document} {
-      allow create: if request.auth != null;
+      allow create: if true;
       allow read: if true;
-      allow write: if request.auth != null;
-      allow delete: if false;
+      allow write: if true;
+      allow delete: if true;
     }
 
     match /Pedidos/{document} {
@@ -44,10 +44,10 @@ service cloud.firestore {
     }
 
     match /ArticuloBlog/{document} {
-      allow create: if request.auth != null;
+      allow create: if true;
       allow read: if true;
-      allow write: if request.auth != null;
-      allow delete: if false;
+      allow write: if true;
+      allow delete: if true;
     }
 
     match /TiposComida/{document} {

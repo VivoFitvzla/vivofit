@@ -1151,28 +1151,38 @@ class _PedidosPageWidgetState extends State<PedidosPageWidget>
                                                                         MainAxisSize
                                                                             .max,
                                                                     children: [
-                                                                      Text(
-                                                                        'Email usuario:',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .labelLarge
-                                                                            .override(
-                                                                              fontFamily: 'Montserrat',
-                                                                              color: FlutterFlowTheme.of(context).colorMarca3,
-                                                                              letterSpacing: 0.0,
-                                                                              fontWeight: FontWeight.w600,
-                                                                            ),
+                                                                      Expanded(
+                                                                        child:
+                                                                            Align(
+                                                                          alignment: const AlignmentDirectional(
+                                                                              -1.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Text(
+                                                                            'Email usuario:',
+                                                                            style: FlutterFlowTheme.of(context).labelLarge.override(
+                                                                                  fontFamily: 'Montserrat',
+                                                                                  color: FlutterFlowTheme.of(context).colorMarca3,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                ),
+                                                                          ),
+                                                                        ),
                                                                       ),
-                                                                      Text(
-                                                                        listaUsuariosItem
-                                                                            .email,
-                                                                        maxLines:
-                                                                            2,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Montserrat',
-                                                                              letterSpacing: 0.0,
-                                                                            ),
+                                                                      Expanded(
+                                                                        child:
+                                                                            Text(
+                                                                          listaUsuariosItem
+                                                                              .email,
+                                                                          maxLines:
+                                                                              2,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Montserrat',
+                                                                                letterSpacing: 0.0,
+                                                                              ),
+                                                                        ),
                                                                       ),
                                                                     ].divide(const SizedBox(
                                                                         width:

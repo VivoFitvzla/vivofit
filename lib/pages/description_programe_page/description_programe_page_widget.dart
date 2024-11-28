@@ -41,12 +41,12 @@ class _DescriptionProgramePageWidgetState
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('DESCRIPTION_PROGRAME_DescriptionPrograme');
       if (dateTimeFormat(
-            "Md",
+            "d/M/y",
             getCurrentTimestamp,
             locale: FFLocalizations.of(context).languageCode,
           ) ==
           dateTimeFormat(
-            "Md",
+            "d/M/y",
             currentUserDocument?.fechaVencimiento,
             locale: FFLocalizations.of(context).languageCode,
           )) {
