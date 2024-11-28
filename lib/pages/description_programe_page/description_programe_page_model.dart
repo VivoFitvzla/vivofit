@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 
 class DescriptionProgramePageModel
     extends FlutterFlowModel<DescriptionProgramePageWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  bool biometricPay = false;
+
   @override
   void initState(BuildContext context) {}
 

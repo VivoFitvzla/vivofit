@@ -6,6 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
+import 'package:local_auth/local_auth.dart';
 import 'description_programe_page_model.dart';
 export 'description_programe_page_model.dart';
 
@@ -161,21 +163,74 @@ class _DescriptionProgramePageWidgetState
                                   onPressed: () async {
                                     logFirebaseEvent(
                                         'DESCRIPTION_PROGRAME_ADQUIRIR_BTN_ON_TAP');
-                                    logFirebaseEvent('Button_navigate_to');
+                                    logFirebaseEvent(
+                                        'Button_biometric_verification');
+                                    final localAuth = LocalAuthentication();
+                                    bool isBiometricSupported =
+                                        await localAuth.isDeviceSupported();
 
-                                    context.pushNamed(
-                                      'PayPage',
-                                      queryParameters: {
-                                        'detallesProgramaPago': serializeParam(
-                                          widget.detallesPrograma,
-                                          ParamType.Document,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'detallesProgramaPago':
+                                    if (isBiometricSupported) {
+                                      try {
+                                        _model.biometricPay =
+                                            await localAuth.authenticate(
+                                                localizedReason:
+                                                    'Verifique su huella para continuar con la compra');
+                                      } on PlatformException {
+                                        _model.biometricPay = false;
+                                      }
+                                      safeSetState(() {});
+                                    }
+
+                                    if (_model.biometricPay) {
+                                      logFirebaseEvent('Button_navigate_to');
+
+                                      context.pushNamed(
+                                        'PayPage',
+                                        queryParameters: {
+                                          'detallesProgramaPago':
+                                              serializeParam(
                                             widget.detallesPrograma,
-                                      },
-                                    );
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'detallesProgramaPago':
+                                              widget.detallesPrograma,
+                                          kTransitionInfoKey: const TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                          ),
+                                        },
+                                      );
+                                    } else {
+                                      logFirebaseEvent('Button_show_snack_bar');
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            'Verificación fallida',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodySmall
+                                                .override(
+                                                  fontFamily: 'Montserrat',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                          duration:
+                                              const Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                        ),
+                                      );
+                                    }
+
+                                    safeSetState(() {});
                                   },
                                   text: 'Adquirir',
                                   options: FFButtonOptions(

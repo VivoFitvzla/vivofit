@@ -26,14 +26,17 @@ class CreateProfilePageModel extends FlutterFlowModel<CreateProfilePageWidget> {
   FocusNode? textFieldFocusNode5;
   TextEditingController? textController5;
   String? Function(BuildContext, String?)? textController5Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode6;
-  TextEditingController? textController6;
-  String? Function(BuildContext, String?)? textController6Validator;
+  // State field(s) for DropDown widget.
+  String? dropDownValue;
+  FormFieldController<String>? dropDownValueController;
   // State field(s) for RadioButton widget.
   FormFieldController<String>? radioButtonValueController1;
   // State field(s) for RadioButton widget.
   FormFieldController<String>? radioButtonValueController2;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
 
   @override
   void initState(BuildContext context) {}
@@ -54,9 +57,6 @@ class CreateProfilePageModel extends FlutterFlowModel<CreateProfilePageWidget> {
 
     textFieldFocusNode5?.dispose();
     textController5?.dispose();
-
-    textFieldFocusNode6?.dispose();
-    textController6?.dispose();
   }
 
   /// Additional helper methods.

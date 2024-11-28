@@ -578,6 +578,17 @@ class _PayPageWidgetState extends State<PayPageWidget> {
                                 nombreUsuario2: currentUserDisplayName,
                                 emailUsuario2: currentUserEmail,
                               ));
+                          logFirebaseEvent('Button_navigate_to');
+
+                          context.pushNamed(
+                            'SuccessPage',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: const TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                              ),
+                            },
+                          );
                         } else {
                           logFirebaseEvent('Button_alert_dialog');
                           await showDialog(
@@ -598,10 +609,6 @@ class _PayPageWidgetState extends State<PayPageWidget> {
                             },
                           );
                         }
-
-                        logFirebaseEvent('Button_navigate_to');
-
-                        context.pushNamed('SuccessPage');
                       },
                       text: 'Enviar datos de pago',
                       options: FFButtonOptions(

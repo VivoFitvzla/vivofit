@@ -808,65 +808,67 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                       fontWeight: FontWeight.w600,
                     ),
               ),
+              FlutterFlowRadioButton(
+                options: ['Hombre', 'Mujer'].toList(),
+                onChanged: (val) => safeSetState(() {}),
+                controller: _model.radioButtonValueController1 ??=
+                    FormFieldController<String>(null),
+                optionHeight: 32.0,
+                textStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                      fontFamily: 'Montserrat',
+                      letterSpacing: 0.0,
+                    ),
+                selectedTextStyle:
+                    FlutterFlowTheme.of(context).bodySmall.override(
+                          fontFamily: 'Montserrat',
+                          color: FlutterFlowTheme.of(context).colorMarca1,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                buttonPosition: RadioButtonPosition.left,
+                direction: Axis.horizontal,
+                radioButtonColor: FlutterFlowTheme.of(context).colorMarca1,
+                inactiveRadioButtonColor:
+                    FlutterFlowTheme.of(context).colorMarca2,
+                toggleable: false,
+                horizontalAlignment: WrapAlignment.start,
+                verticalAlignment: WrapCrossAlignment.start,
+              ),
               Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  FlutterFlowRadioButton(
-                    options: ['Hombre', 'Mujer'].toList(),
-                    onChanged: (val) => safeSetState(() {}),
-                    controller: _model.radioButtonValueController1 ??=
-                        FormFieldController<String>(null),
-                    optionHeight: 32.0,
-                    textStyle:
-                        FlutterFlowTheme.of(context).labelMedium.override(
+                  Expanded(
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        logFirebaseEvent(
+                            'EDIT_PROFILE_PAGE_PAGE_EDITAR_BTN_ON_TAP');
+                        logFirebaseEvent('Button_backend_call');
+
+                        await currentUserReference!
+                            .update(createUsersRecordData(
+                          hombre: _model.radioButtonValue1 == 'Hombre',
+                          mujer: _model.radioButtonValue1 == 'Mujer',
+                        ));
+                      },
+                      text: 'Editar',
+                      options: FFButtonOptions(
+                        height: 50.0,
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).colorMarca1,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodySmall
+                            .override(
                               fontFamily: 'Montserrat',
-                              letterSpacing: 0.0,
-                            ),
-                    selectedTextStyle:
-                        FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Montserrat',
-                              color: FlutterFlowTheme.of(context).colorMarca1,
+                              color: FlutterFlowTheme.of(context).colorMarca3,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
                             ),
-                    buttonPosition: RadioButtonPosition.left,
-                    direction: Axis.horizontal,
-                    radioButtonColor: FlutterFlowTheme.of(context).colorMarca1,
-                    inactiveRadioButtonColor:
-                        FlutterFlowTheme.of(context).colorMarca2,
-                    toggleable: false,
-                    horizontalAlignment: WrapAlignment.start,
-                    verticalAlignment: WrapCrossAlignment.start,
-                  ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      logFirebaseEvent(
-                          'EDIT_PROFILE_PAGE_PAGE_EDITAR_BTN_ON_TAP');
-                      logFirebaseEvent('Button_backend_call');
-
-                      await currentUserReference!.update(createUsersRecordData(
-                        hombre: _model.radioButtonValue1 == 'Hombre',
-                        mujer: _model.radioButtonValue1 == 'Mujer',
-                      ));
-                    },
-                    text: 'Editar',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).colorMarca1,
-                      textStyle:
-                          FlutterFlowTheme.of(context).bodySmall.override(
-                                fontFamily: 'Montserrat',
-                                color: FlutterFlowTheme.of(context).colorMarca3,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w500,
-                              ),
-                      elevation: 5.0,
-                      borderRadius: BorderRadius.circular(10.0),
+                        elevation: 5.0,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                     ),
                   ),
                 ],
@@ -880,67 +882,69 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                       fontWeight: FontWeight.w600,
                     ),
               ),
+              FlutterFlowRadioButton(
+                options: ['Básico', 'Intermedio', 'Avanzado'].toList(),
+                onChanged: (val) => safeSetState(() {}),
+                controller: _model.radioButtonValueController2 ??=
+                    FormFieldController<String>(null),
+                optionHeight: 32.0,
+                textStyle: FlutterFlowTheme.of(context).labelMedium.override(
+                      fontFamily: 'Montserrat',
+                      letterSpacing: 0.0,
+                    ),
+                selectedTextStyle:
+                    FlutterFlowTheme.of(context).bodySmall.override(
+                          fontFamily: 'Montserrat',
+                          color: FlutterFlowTheme.of(context).colorMarca1,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                buttonPosition: RadioButtonPosition.left,
+                direction: Axis.horizontal,
+                radioButtonColor: FlutterFlowTheme.of(context).colorMarca1,
+                inactiveRadioButtonColor:
+                    FlutterFlowTheme.of(context).colorMarca2,
+                toggleable: false,
+                horizontalAlignment: WrapAlignment.start,
+                verticalAlignment: WrapCrossAlignment.start,
+              ),
               Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  FlutterFlowRadioButton(
-                    options: ['Option 1', 'Option 2', 'Option 3'].toList(),
-                    onChanged: (val) => safeSetState(() {}),
-                    controller: _model.radioButtonValueController2 ??=
-                        FormFieldController<String>(null),
-                    optionHeight: 32.0,
-                    textStyle:
-                        FlutterFlowTheme.of(context).labelMedium.override(
+                  Expanded(
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        logFirebaseEvent(
+                            'EDIT_PROFILE_PAGE_PAGE_EDITAR_BTN_ON_TAP');
+                        logFirebaseEvent('Button_backend_call');
+
+                        await currentUserReference!
+                            .update(createUsersRecordData(
+                          nivelBasico: _model.radioButtonValue2 == 'Básico',
+                          nivelIntermedio:
+                              _model.radioButtonValue2 == 'Intermedio',
+                          nivelAvanzado: _model.radioButtonValue2 == 'Avanzado',
+                        ));
+                      },
+                      text: 'Editar',
+                      options: FFButtonOptions(
+                        height: 50.0,
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).colorMarca1,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodySmall
+                            .override(
                               fontFamily: 'Montserrat',
-                              letterSpacing: 0.0,
-                            ),
-                    selectedTextStyle:
-                        FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Montserrat',
-                              color: FlutterFlowTheme.of(context).colorMarca1,
+                              color: FlutterFlowTheme.of(context).colorMarca3,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w500,
                             ),
-                    buttonPosition: RadioButtonPosition.left,
-                    direction: Axis.horizontal,
-                    radioButtonColor: FlutterFlowTheme.of(context).colorMarca1,
-                    inactiveRadioButtonColor:
-                        FlutterFlowTheme.of(context).colorMarca2,
-                    toggleable: false,
-                    horizontalAlignment: WrapAlignment.start,
-                    verticalAlignment: WrapCrossAlignment.start,
-                  ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      logFirebaseEvent(
-                          'EDIT_PROFILE_PAGE_PAGE_EDITAR_BTN_ON_TAP');
-                      logFirebaseEvent('Button_backend_call');
-
-                      await currentUserReference!.update(createUsersRecordData(
-                        nivelBasico: _model.radioButtonValue2 == 'Básico',
-                        nivelIntermedio:
-                            _model.radioButtonValue2 == 'Intermedio',
-                        nivelAvanzado: _model.radioButtonValue2 == 'Avanzado',
-                      ));
-                    },
-                    text: 'Editar',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).colorMarca1,
-                      textStyle:
-                          FlutterFlowTheme.of(context).bodySmall.override(
-                                fontFamily: 'Montserrat',
-                                color: FlutterFlowTheme.of(context).colorMarca3,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w500,
-                              ),
-                      elevation: 5.0,
-                      borderRadius: BorderRadius.circular(10.0),
+                        elevation: 5.0,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                     ),
                   ),
                 ],
